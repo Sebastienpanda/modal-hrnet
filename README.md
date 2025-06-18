@@ -1,54 +1,96 @@
-# React + TypeScript + Vite
+# 🧩 react-accessible-modal-hrnet
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight, accessible and animated React modal — inspired by [jquery-modal](https://jquerymodal.com) but built for modern React projects. Perfect for forms, confirmations, alerts, and more.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Installation
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install react-accessible-modal-hrnet
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ⚙️ Usage
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```tsx
+import { Modal } from "react-accessible-modal-hrnet";
+import "react-accessible-modal-hrnet/dist/components/modal.css"; // Required styles
+
+function App() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <button onClick={() => setIsOpen(true)}>Open Modal</button>
+      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <h2>Hello from the Modal!</h2>
+      </Modal>
+    </>
+  );
+}
 ```
+
+---
+
+## 🎛 Modal Props
+
+| Prop           | Type               | Default     | Description                                                                 |
+|----------------|--------------------|-------------|-----------------------------------------------------------------------------|
+| `isOpen`       | `boolean`          | **required** | Whether the modal is currently open                                        |
+| `onClose`      | `() => void`       | **required** | Callback triggered when modal should close                                 |
+| `children`     | `React.ReactNode`  | **required** | Modal content                                                              |
+| `escapeClose`  | `boolean`          | `true`       | Whether pressing `ESC` closes the modal                                    |
+| `clickClose`   | `boolean`          | `true`       | Whether clicking the overlay closes the modal                              |
+| `showClose`    | `boolean`          | `true`       | Whether to show the close (×) button                                       |
+| `fadeDuration` | `number` (ms)      | `300`        | Animation duration in milliseconds                                         |
+| `fadeDelay`    | `number` (0–2)     | `1`          | Delay before modal content fades in (multiplied by `fadeDuration`)         |
+| `closeClass`   | `string`           | `""`         | Extra CSS class applied to the close button                                |
+| `closeText`    | `string`           | `"×"`        | Text/label of the close button                                             |
+
+---
+
+## 📦 CSS
+
+The component **inject styles automatically**.
+
+You can override or replace the styles if needed.
+
+---
+
+## ♿ Accessibility
+
+This modal includes:
+
+- `aria-modal="true"`
+- Keyboard support (tab navigation, ESC to close)
+- Accessible close button
+- Overlay focusable with keyboard
+
+---
+
+## 🧪 Coming Soon
+
+- Focus trap inside the modal
+- Scroll lock when modal is open
+- ARIA labels (`aria-labelledby`, `aria-describedby`)
+- Optional auto-close timer
+- Custom animation classes
+
+---
+
+## 🛠 Contributing
+
+Pull requests welcome if you want to improve:
+
+- Accessibility
+- Styling and theming
+- Testing
+- Features (focus trap, scroll lock, etc.)
+
+---
+
+## 📜 License
+
+MIT © [Seb](https://github.com/Sebastienpanda)

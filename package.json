@@ -1,11 +1,23 @@
 {
-  "name": "react-accessible-modal",
-  "version": "0.0.1",
+  "name": "react-accessible-modal-hrnet",
+  "version": "0.0.5",
+  "description": "Accessible and customizable React modal inspired by jquery-modal",
+  "author": "Sebastien Panda",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sebastienpanda/modal-hrnet.git"
+  },
+  "homepage": "https://github.com/Sebastienpanda/modal-hrnet#readme",
+  "bugs": {
+    "url": "https://github.com/Sebastienpanda/modal-hrnet/issues"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
-    "build-lib": "tsc -p tsconfig.build.json",
+    "build": "tsc -b && vite build && pnpm run copy-css",
+    "build-lib": "tsc -p tsconfig.build.json && pnpm run copy-css",
+    "copy-css": "cpx src/components/modal.css dist/components/",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -29,6 +41,7 @@
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",
+    "cpx": "^1.5.0",
     "eslint": "^9.25.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
